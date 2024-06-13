@@ -1,0 +1,12 @@
+To Embed Sorting in Search Result:
+<@liferay_portlet["runtime"]
+  instanceId="Unique-ID"
+  portletName="com_liferay_portal_search_web_internal_sort_portlet_SortPortlet_INSTANCE_nndp_sortSelection"
+/>
+
+To Embed Commerce product category navigation:
+<@liferay_portlet["runtime"]
+  portletProviderAction=portletProviderAction.EDIT
+  instanceId="Unique-ID"
+  portletName="com_liferay_commerce_product_asset_categories_navigation_web_internal_portlet_CPAssetCategoriesNavigationPortlet"
+/>
