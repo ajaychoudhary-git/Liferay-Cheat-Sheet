@@ -1,0 +1,43 @@
+{
+    "fieldSets": [
+        {
+            "fields": [
+                {
+                    "name": "numberOfSlider",
+                    "label": "Number of Slider",
+                    "description": "number-of-slider",
+                    "type": "select",
+                    "dataType": "int",
+                    "typeOptions": {
+                        "validValues": [
+                            {"value": "1"},
+                            {"value": "2"},
+                            {"value": "3"},
+                            {"value": "4"},
+                            {"value": "5"}
+                        ]
+                    },
+                    "defaultValue": "2"
+                }
+            ]
+        }
+    ]
+}
+
+
+<div class="banner-slider">
+  [#if configuration.numberOfSlider??]
+    [#list 1..configuration.numberOfSlider?number as slider]
+      <div class="row align-items-center slider-${slider}">
+        <div class="col-xl-4 col-12">
+          <div class="reci-head">
+            <h2 data-lfr-editable-id="slider-heading-text-${slider}" data-lfr-editable-type="text">Proven Performance For Your Engine.</h2>
+            <a class="btn reci-btn" href="" data-lfr-editable-id="slider-blue-button-${slider}" data-lfr-editable-type="link">Explore All</a>
+          </div>
+        </div>
+      </div>
+    [/#list]
+  [/#if]
+</div>
+
+
