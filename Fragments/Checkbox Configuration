@@ -1,0 +1,28 @@
+{
+    "fieldSets": [
+        {
+            "fields": [
+                {
+                "label": "Show Popup",
+                "name": "showPopup",
+                "type": "checkbox",
+                "defaultValue": false
+                }
+            ]
+        }
+    ]
+}
+
+
+[#if (configuration.showPopupToGuest!false) || (themeDisplay.isSignedIn())]
+[#if configuration.popupname??]
+<div class="popup-wrap">
+        <div class="pcart-wrap">
+            <div class="d-flex justify-content-center">
+                <img data-lfr-editable-id="toastimg1" data-lfr-editable-type="image" src="./images/icons/toast.svg" alt="Added to Wishlist" />
+                <p data-lfr-editable-id="toasttext1" data-lfr-editable-type="text">Item Added To Wishlist</p>
+            </div>
+        </div>
+    </div>
+[/#if]
+[/#if]
