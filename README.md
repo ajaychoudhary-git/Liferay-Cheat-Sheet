@@ -27,10 +27,6 @@ Welcome to the **Liferay Cheat Sheet** repository! This repository contains vari
 
 Contributions are welcome! If you have custom codes, configurations, or templates that you think would be helpful to other Liferay developers, feel free to submit a pull request. Please ensure your contributions are well-documented and follow the existing folder structure.
 
-## License
-
-This repository is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
-
 ## Contact
 
 If you have any questions or need further assistance, feel free to visit [Learn Liferay](https://learnliferay.com).
