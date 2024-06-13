@@ -1,0 +1,23 @@
+{
+    "fieldSets": [
+        {
+            "fields": [
+                {
+                    "name": "parentclass",
+                    "label": "Parent Class",
+                    "description": "parent-class",
+                    "type": "text",
+                    "typeOptions": {
+                        "placeholder": "Class Name"
+                    },
+                    "dataType": "string",
+                    "defaultValue": "signup-sec"
+                }
+            ]
+        }
+    ]
+}
+
+<section class="${configuration.parentclass}">
+  <lfr-drop-zone></lfr-drop-zone>
+</section>
