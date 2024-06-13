@@ -29,7 +29,7 @@ Contributions are welcome! If you have custom codes, configurations, or template
 
 ## Contact
 
-If you have any questions or need further assistance, feel free to visit [Learn Liferay](https://learnliferay.com).
+If you have any questions or need further assistance, feel free to visit [Liferay Tutorials](https://learnliferay.com).
 
 ---
 
