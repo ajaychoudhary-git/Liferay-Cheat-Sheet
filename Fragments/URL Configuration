@@ -1,0 +1,18 @@
+{
+    "fieldSets": [
+        {
+            "fields": [
+                {
+                    "label": "My URL",
+                    "name": "myURL",
+                    "type": "url"
+                }
+            ]
+        }
+    ]
+}
+
+
+<div class="container">
+    <a href=${configuration.myURL}>Click Here!</a>
+</div>
