@@ -1,0 +1,10 @@
+<#assign assetEntryLocalServiceUtil = serviceLocator.findService("com.liferay.asset.kernel.service.AssetEntryLocalService") />
+<#assign assetCategoryLocalServiceUtil = serviceLocator.findService("com.liferay.asset.kernel.service.AssetCategoryLocalService") />
+<#assign assetEntry = assetEntryLocalServiceUtil.fetchEntry(entry.getClassName(), entry.getClassPK()) />
+<#assign CatIds = assetEntry.getCategoryIds()/>
+    <#list CatIds as catID>
+        <#assign category = assetCategoryLocalServiceUtil.getAssetCategory(catID) />
+        <#if category.getName() == "Step By Step">
+            <p class="result-badge">Step By Step</p>
+        </#if>
+    </#list>
