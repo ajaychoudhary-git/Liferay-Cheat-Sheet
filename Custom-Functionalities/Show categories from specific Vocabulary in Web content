@@ -1,0 +1,21 @@
+<#assign articleId = .vars['reserved-article-id'].data />
+<#assign vocabLocalService = serviceLocator.findService("com.liferay.asset.kernel.service.AssetVocabularyLocalService") />
+<#assign assetEntryLocalService = serviceLocator.findService("com.liferay.asset.kernel.service.AssetEntryLocalService") />
+<#assign journalArticleLocalService = serviceLocator.findService("com.liferay.journal.service.JournalArticleLocalService") />
+<#assign article = journalArticleLocalService.getArticle(getterUtil.getLong(scopeGroupId), articleId) />
+<#assign asset = assetEntryLocalService.getEntry('com.liferay.journal.model.JournalArticle', article.resourcePrimKey) />
+
+
+<#assign constVocabOfContentType = "Vocab_Name_Here" />
+
+
+<#list asset.getCategories() as category>
+  <#assign vocabName = vocabLocalService.getVocabulary(category.vocabularyId).getTitle("en_US") />
+  <#if vocabName == constVocabOfContentType>
+    <#assign EntityName = category.getTitle(themeDisplay.getLocale()) />
+  </#if>
+</#list>
+
+<#if EntityName??>
+  ${EntityName}
+</#if>
