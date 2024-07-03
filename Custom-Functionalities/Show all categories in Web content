@@ -1,0 +1,9 @@
+<#assign articleId = .vars['reserved-article-id'].data />
+<#assign assetEntryLocalService = serviceLocator.findService("com.liferay.asset.kernel.service.AssetEntryLocalService") />
+<#assign journalArticleLocalService = serviceLocator.findService("com.liferay.journal.service.JournalArticleLocalService") />
+<#assign article = journalArticleLocalService.getArticle(getterUtil.getLong(scopeGroupId), articleId) />
+<#assign asset = assetEntryLocalService.getEntry('com.liferay.journal.model.JournalArticle', article.resourcePrimKey) />
+
+<#list asset.getCategories() as category>
+  ${category.getTitle(themeDisplay.getLocale())}
+</#list>
