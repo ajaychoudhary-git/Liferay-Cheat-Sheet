@@ -1,0 +1,33 @@
+<!-- Here we are going to use the same code in "Show categories from specific Vocabulary in Web content" to get categories of a specific vocabulary. 
+We will add "iconImage" in key and image URL in Value of the category property. -->
+
+<#assign articleId = .vars['reserved-article-id'].data />
+<#assign vocabLocalService = serviceLocator.findService("com.liferay.asset.kernel.service.AssetVocabularyLocalService") />
+<#assign assetEntryLocalService = serviceLocator.findService("com.liferay.asset.kernel.service.AssetEntryLocalService") />
+<#assign journalArticleLocalService = serviceLocator.findService("com.liferay.journal.service.JournalArticleLocalService") />
+<#assign article = journalArticleLocalService.getArticle(getterUtil.getLong(scopeGroupId), articleId) />
+<#assign asset = assetEntryLocalService.getEntry('com.liferay.journal.model.JournalArticle', article.resourcePrimKey) />
+
+
+<#assign vocab = "Vocab_Name_Here" />
+
+
+<#list asset.getCategories() as category>
+  <#assign vocabName = vocabLocalService.getVocabulary(category.vocabularyId).getTitle("en_US") />
+  <#if vocabName == vocab>
+    <#assign EntityName = category.getTitle(themeDisplay.getLocale()) />
+    <!--Getting category ID-->
+    <#assign EntityID = category.getCategoryId() />
+    <!-- Assigning service locator to get asset property -->
+    <#assign assetPropertyLocalService=serviceLocator.findService("com.liferay.asset.category.property.service.AssetCategoryPropertyLocalService") />
+
+    <#assign categoryImage = assetPropertyLocalService.fetchCategoryProperty(EntityID?number, 'iconImage').getValue() />
+  </#if>
+</#list>
+
+<#if EntityName??>
+  ${EntityName}
+</#if>
+<#if categoryImage??>
+  ${categoryImage}
+</#if>
