@@ -16,6 +16,7 @@ Welcome to the **Liferay Cheat Sheet** repository! This repository contains vari
   - **Filter Content by Categories in Search Result**: Custom code for filtering search results content by categories.
   - **Show all categories in Web content**: Custom code to show all categories in a web content.
   - **Show categories from specific Vocabulary in Web content**: Custom code to show categories from a specific Vocabulary in a web content.
+  - **Fetch category Properties in web content**: Custom code to fetch the properties of categories assigned to the web content. It can also be used in templates.
 
 ## How to Use
 
