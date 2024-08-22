@@ -6,12 +6,12 @@
 <#assign asset = assetEntryLocalService.getEntry('com.liferay.journal.model.JournalArticle', article.resourcePrimKey) />
 
 
-<#assign constVocabOfContentType = "Vocab_Name_Here" />
+<#assign vocab = "Vocab_Name_Here" />
 
 
 <#list asset.getCategories() as category>
   <#assign vocabName = vocabLocalService.getVocabulary(category.vocabularyId).getTitle("en_US") />
-  <#if vocabName == constVocabOfContentType>
+  <#if vocabName == vocab>
     <#assign EntityName = category.getTitle(themeDisplay.getLocale()) />
   </#if>
 </#list>
