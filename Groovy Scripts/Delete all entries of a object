@@ -1,0 +1,48 @@
+import com.liferay.object.model.ObjectDefinition
+import com.liferay.object.model.ObjectEntry
+import com.liferay.object.service.ObjectDefinitionLocalServiceUtil
+import com.liferay.object.service.ObjectEntryLocalServiceUtil
+import com.liferay.portal.kernel.security.auth.PrincipalThreadLocal
+import com.liferay.portal.kernel.util.PortalUtil
+import com.liferay.portal.kernel.model.GroupConstants
+
+def objectExternalReferenceCode = "{Enter Object ERC.}"
+
+def companyId = PortalUtil.getDefaultCompanyId()
+def userId = PrincipalThreadLocal.getUserId()
+
+ObjectDefinition objectDefinition = ObjectDefinitionLocalServiceUtil.fetchObjectDefinitionByExternalReferenceCode(
+    objectExternalReferenceCode, companyId
+)
+
+if (objectDefinition == null) {
+    println "❌ Object with externalReferenceCode '${objectExternalReferenceCode}' not found."
+    return
+}
+
+def groupId = GroupConstants.DEFAULT_LIVE_GROUP_ID
+
+int deletedCount = 0
+int start = 0
+int pageSize = 100
+
+while (true) {
+    def entries = ObjectEntryLocalServiceUtil.getObjectEntries(
+        groupId, objectDefinition.getObjectDefinitionId(), start, start + pageSize
+    )
+
+    if (entries.isEmpty()) break
+
+    entries.each { entry ->
+        try {
+            ObjectEntryLocalServiceUtil.deleteObjectEntry(entry)
+            deletedCount++
+        } catch (Exception e) {
+            println "⚠️ Could not delete entry ID ${entry.getObjectEntryId()}: ${e.message}"
+        }
+    }
+
+    start += pageSize
+}
+
+println "✅ Successfully deleted ${deletedCount} entries from object '${objectExternalReferenceCode}'"
