@@ -1,0 +1,14 @@
+<#if entries?has_content> 
+    <#list entries as entry> 
+        <#assign journalArticleService = serviceLocator.findService("com.liferay.journal.service.JournalArticleLocalService") /> 
+        <#assign entryArticle = journalArticleService.getLatestArticle(entry.getClassPK()) /> 
+        <#assign docXML = saxReaderUtil.read(entryArticle.getDocument().asXML()) /> 
+        <#assign newsContentNode = docXML.selectSingleNode("/root/dynamic-element[@field-reference='NewsContent']/dynamic-content") /> 
+<!-- In above line, NewsContent is the field reference ID from webcontent structure -->
+
+        <#if newsContentNode?has_content> 
+            <div class="col-md-4 border border-primary p-2">${newsContentNode.getStringValue()}</div> 
+        </#if> 
+
+    </#list> 
+</#if>
