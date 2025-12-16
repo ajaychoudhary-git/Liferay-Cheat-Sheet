@@ -1,0 +1,18 @@
+Add "Paste Any Elasticsearch Query", Occur dropdown value - MUST. 
+
+{
+  "bool": {
+    "should": [
+      {
+        "term": {
+          "assetTagNames": "Tag name here"
+        }
+      },
+      {
+        "term": {
+          "ddmStructureKey": "WC Structure ID"
+        }
+      }
+    ]
+  }
+}
