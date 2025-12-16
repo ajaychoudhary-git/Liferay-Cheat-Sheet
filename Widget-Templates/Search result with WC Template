@@ -1,0 +1,11 @@
+<#if entries?has_content>
+	<#list entries as entry>
+            <#assign journalArticleService = serviceLocator.findService("com.liferay.journal.service.JournalArticleLocalService") />
+            <#assign entryArticle = journalArticleService.getLatestArticle(entry.getClassPK()) />
+					<@liferay_journal["journal-article"]
+						articleId=entryArticle.articleId
+						ddmTemplateKey="12345" ----> WC Template Key
+						groupId=entryArticle.groupId
+					/>	
+	</#list>
+</#if>
