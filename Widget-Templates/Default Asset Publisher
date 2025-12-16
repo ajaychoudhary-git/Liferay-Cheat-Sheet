@@ -1,0 +1,18 @@
+<#if entries?has_content>
+	<div class="row mt-5 justify-content-center">
+			<#list entries as curEntry>
+				<div class="col-md-3">
+					<#assign 
+							assetRenderer = curEntry.getAssetRenderer()
+							journalArticle = assetRenderer.getAssetObject()      
+					/>
+
+					<@liferay_journal["journal-article"]
+						articleId=journalArticle.getArticleId()
+						ddmTemplateKey="12345"  --------> WC Template Key
+						groupId=journalArticle.getGroupId()
+					/>
+				</div>
+			</#list>
+	</div>
+</#if>
